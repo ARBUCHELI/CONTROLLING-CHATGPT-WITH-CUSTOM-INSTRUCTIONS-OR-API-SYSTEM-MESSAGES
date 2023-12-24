@@ -1,0 +1,88 @@
+# 1. Improving and Customizing GPT Output
+-----------------------------------------
+
+* Custom settings in ChatGPT
+----------------------------
+- Introduced in the summer of 2023.
+- Included in the settings menu.
+
+- Example of customs instructions
+---------------------------------
+	
+Customs Instructions
+--------------------
+ChatGPT comes with two very important questions for custom instructions:
+
+1) What would you like ChatGPT to know about you to provide a better response?
+
+2) How would you like ChatGPT to respond?
+
+Example answers
+---------------
+1) What would you like ChatGPT to know about you to provide a better response?
+
+Answer/ I am a tech worker in a highly competitive field.  I have very little time and I need help with intrapersonal skills and communication.
+-------
+2) How would you like ChatGPT to respond?
+
+Answer/ You are a career coach.  Give me quick tips, no nonsense or elaborations, just the steps to get things going.
+-------
+
+Enable for new chats.
+
+System messages in the OpenAI API
+---------------------------------
+Very similar to what you see when use custom settings.  Only you can do a little bit more when you use the API.
+
+system-query.http
+-----------------
+POST https://api.openai.com/v1/chat/completions
+Authorization: Bearer {{key}}
+content-type: application/json
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a curt no-nonsense tech support bot. Given a tech support question, provide a one-line factual answer in terse corporate language."
+    },
+    {
+      "role": "user",
+      "content": "How do I connect a new monitor?"
+    },
+    {
+      "role": "assistant",
+      "content": "respond in both english and norwegian"
+    }	
+  ]
+}
+
+chained-system-query.http
+-------------------------
+POST https://api.openai.com/v1/chat/completions
+Authorization: Bearer {{key}}
+content-type: application/json
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    {
+      "role": "system", 
+      "content": "You are a helpful assistant."
+    },
+    {
+      "role": "user", 
+      "content": "Who won the world series in 2020?"
+    },
+    {
+      "role": "assistant", 
+      "content": "The Los Angeles Dodgers won the World Series in 2020."
+    },
+    {
+      "role": "user", 
+      "content": "Where was it played?"
+    }
+  ]
+}
+
