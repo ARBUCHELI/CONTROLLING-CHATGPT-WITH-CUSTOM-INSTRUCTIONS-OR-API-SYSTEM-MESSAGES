@@ -1,0 +1,12 @@
+# Introduction
+--------------
+
+* ChatGPT and OpenAI API system messages
+----------------------------------------
+Ex:
+---
+	- Act like a helpful assistant.
+	- Act like a career coach.
+	- You are a senior javascript developer.
+	
+These are system messages --> You can change these messages and this changes the operation of these systems fundamentally.
